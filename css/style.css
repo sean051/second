@@ -72,7 +72,8 @@ nav > #id_imgList > img {
 .cl_imgMain {
   position: absolute; 
   width: 980px;        
-  height: 600px;
+  height: 550px;
+  top: 35vh;
   left: 50%;
   transform: translate(-50%, 0);
   border-left: 10px groove skyblue;
@@ -101,7 +102,7 @@ nav > #id_imgList > img {
   width: 980px;      
   height: 600px;
   left: 50%;
-  top: 10px;
+  top: 5vh;
   transform: translate(-50%, 0);
   background-color: rgba(255, 255, 255, 0.7);
   border: 20px dashed rgba(255, 255, 255, 0.8);
