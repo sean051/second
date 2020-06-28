@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- 수동작업한 js, css-->
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>첫 화면</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <img src="" id="id_bodyImg" style="display: none;">
+    <all class="all">
+      <header>
+        <a href="index.html">          
+          <div class="menu-1 glyphicon glyphicon-home" name="nm_menu">&nbsp;Home</div>
+        </a>
+        <a href="#">
+          <div class="menu-1 glyphicon glyphicon-book" id="id_post" name="nm_menu">&nbsp;Post</div>
+        </a>
+        <a href="#">
+          <div class="menu-1 glyphicon glyphicon-list" name="nm_menu">&nbsp;Board</div>
+        </a>
+        <a href="#">
+            <div class="menu-1 glyphicon glyphicon-piggy-bank" name="nm_menu">&nbsp;To-DoList</div>
+        </a>  
+        <div class="menu-1"></div>
+        <div class="menu-1"></div>
+        <div class="menu-4">    
+        </div>        
+      </header>
+      <nav>
+        <img src="images/rope.png" id="id_rope">
+        <div class="menu-12" id="id_imgList"></div>
+        <div id="id_imgList100"></div>
+        <div class="menu-12">          
+          <div id="id_disp">
+            <h2>Title</h2>
+            <div class="cl_title"></div>
+            <h2>Content</h2>
+            <hr>
+            <div class="cl_content"></div><br><br>
+            <div class="cl_userInfo"></div>
+            <div class="cl_btns">
+              <button class="btn btn-primary" onclick="f_clkRtn()"><div class="glyphicon glyphicon-th-list" ></div> Return</button>
+              <button class="btn btn-success" style="display:none" onclick="f_clkMod()" ><div class="glyphicon glyphicon-pencil"></div> Modify</button>
+              <button class="btn btn-danger" style="display:none" onclick="f_clkDel()"><div class="glyphicon glyphicon-remove"></div> Remove</button>
+              <button class="btn btn-success" style="display:none" onclick="f_clkNew()" id="id_new"><div class='glyphicon glyphicon-ok'></div> Regist</button>
+              <button class="btn btn-info" style="display:none" onclick="f_modComplete()"><div class='glyphicon glyphicon-ok'></div> Complete</button>
+            </div>              
+          </div>
+          <button class="btn btn-default cl_newWrite" onclick="f_clkWrite()"><div class="glyphicon glyphicon-pencil"></div> Write</button>
+          <div id="id_table"></div>
+          <div id="id_paging"></div>
+          <!-- <img src="images/사진15.jpg" id="id_mainImg" class="cl_imgMain" > -->
+        </div>
+      <nav>
+    </all>
+
+    <script>      
+//      새로고침 막기
+      window.onkeydown = (function () {
+        console.log(event.key);
+        if (event.key == "F5") {
+          event.preventDefault();
+        }
+      });
+//      첫 화면 구현
+      window.onload = function () {
+        var v_imgCnt = 19;
+        for (var i = 0; i < v_imgCnt * 2; i++) {
+          $("#id_imgList").append(f_imgCreate(v_imgCnt)[i]);          
+        }
+        f_imgMv(v_imgCnt), f_menuAni(), f_wallPaperSet(), f_mkImg();
+        $("body").attr("style", "overflow:scroll");
+        // div태그를 자식으로 갖고 있는 a 태그 클릭 막기
+        $("a").attr("style", "visibility:hidden").end().find("div").attr("style", "visibility:visible");           
+        localStorage.setItem("postTog", "true");
+      };       
+
+//      post 메뉴 구현
+      $("#id_post").on("click", function() {
+        f_clkPost(JSON.parse(localStorage.getItem("postTog")));
+        $("#id_imgList100").html("");
+        $("body").attr("style", "overflow:hidden");        
+        // console.log(JSON.parse(localStorage.getItem("postTog")));
+      });
+
+      function f_mkImg() {
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open("GET","public/naver.php?search='강아지'",true);
+        v_ajax.send();
+        v_ajax.onreadystatechange = function () {
+        if (v_ajax.readyState == "4" && v_ajax.status == "200") {
+          var v_data = v_ajax.responseText;
+          v_data = JSON.parse(v_data);
+          var str= "";
+          for (var i = 0; i < 100; i++) {
+            str += "<a href=" + v_data.items[i].link + " download='강아지사진'><img src=" + v_data.items[i].link + 
+              " style='margin:20px;width:200px; height:200px;border: 5px groove orange;' /></a>";
+          }
+          $("#id_imgList100").html(str);          
+          }
+        }
+      }
+
+
+
+    </script>
+  </body>
+</html>

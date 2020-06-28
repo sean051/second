@@ -1,0 +1,142 @@
+
+/** index.html css **/
+body {
+  overflow: hidden;
+}
+body > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5;        
+}
+.all {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 800px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+}
+header {
+  position: relative;
+  display: inline-block;
+  line-height: 100px;
+  width: 96%;
+  min-width: 700px;
+  height: 100px;
+  margin: 20px;
+  border-bottom: 2px solid black;
+}
+header .menu-1 {
+  width: 120px;
+  margin-left: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1em;
+  height: 95px;
+  line-height: 95px;
+  width: 150px;
+  color: black;
+}
+.menu-4 {
+  margin: 0;
+  width: 800px;
+  min-width: 600px;
+  font-weight: bold;
+  text-align: center;
+}
+.menu-12 {
+  margin: 0;
+  width: 100%;
+  height: 70px;
+}
+#id_imgList {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+nav > #id_imgList > img {
+  position: absolute;
+  display: inline-block;
+  z-index: 100;
+  border: 5px groove orange;
+}
+#id_rope {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: -1;
+}
+.cl_imgMain {
+  position: absolute; 
+  width: 980px;        
+  height: 600px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-left: 10px groove skyblue;
+  border-right: 10px groove burlywood;
+}
+
+.cl_btns {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;        
+  height: 80px;        
+}
+#id_table {
+  position: relative; 
+  display: none;
+  width: 980px;      
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+/** post view 구현 **/
+#id_disp {
+  position: relative; 
+  display: none;
+  width: 980px;      
+  height: 600px;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 20px dashed rgba(255, 255, 255, 0.8);
+  /* overflow: scroll; */
+  text-indent: 2em;
+}
+#id_disp h2 {
+  font-style: oblique;
+}
+#id_disp button {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+#id_disp p {
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+#id_paging {
+  position: relative; 
+  display: none;
+  width: 980px;      
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%, 0);
+  opacity: 0.9;
+}
+.cl_userInfo {
+  font-weight: bold;
+  font-size: 1.1em;
+  font-style: oblique;
+}
+.cl_newWrite {
+  position: relative;
+  top: 70px;
+  left: 50%;
+  transform: translate(500%, 0);
+  display: none;
+}
